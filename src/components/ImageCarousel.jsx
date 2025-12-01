@@ -28,7 +28,7 @@ const ImageCarousel = () => {
   
         <Carousel plugins={[
         Autoplay({
-          delay:100000
+          delay:4000
         }),
       ]} className="w-full">
   <CarouselContent className="m-0">
