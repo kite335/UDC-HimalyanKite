@@ -42,17 +42,28 @@ const Header = () => {
       },
     ],
 
-    Trekking: [
+    Adventure: [
       {
-        link: "/trekking",
-        options: "All Trekks In India",
-        description: "Variety of Trekk for adventure",
+        link: "/rafting",
+        options: "Rafting",
+        description: "Variety of rafting",
       },
 
       {
-        link: "/winter-trekks",
-        options: "Winter Trekks",
-        description: "Special Winter Trekks To enjoy",
+        link: "/paragliding",
+        options: "Paragliding",
+        description: "paraglading theme"
+      },
+      
+      {
+        link: "/cycling",
+        options: "Cycling",
+        description: "cycling theme"
+      },
+      {
+        link: "/bungee-jumping",
+        options: "Bungee-Jumping",
+        description: "bungee jumping theme"
       },
     ],
     "Climbing Expeditions": [
@@ -75,9 +86,10 @@ const Header = () => {
   ];
 
   const dropdownMenuItem = [
+    "Adventure",
     "About",
     "Special Interest Tours",
-    "Trekking",
+    
     "Climbing Expeditions",
   ];
 
@@ -121,7 +133,7 @@ const Header = () => {
 
         <NavigationMenu>
           <NavigationMenuList>
-            {/* Dropdown: About,Special interest Tours,Trekking, Climbing Expeditions */}
+            {/* Dropdown: Adventure,Special interest Tours,Climbing Expeditions */}
             {dropdownMenuItem.map((menuItem) => {
               const Item = dropdownItems[menuItem];
               console.log(Item);
