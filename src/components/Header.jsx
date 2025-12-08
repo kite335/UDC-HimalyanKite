@@ -1,17 +1,25 @@
 import * as React from "react";
 import SearchBar from "./SearchBar";
-
+import { ChevronDownIcon } from "lucide-react";
 
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
 } from "./ui/navigation-menu";
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
 
 const Header = () => {
 
@@ -49,12 +57,13 @@ const Header = () => {
         description: "Variety of rafting",
       },
 
+
       {
         link: "/paragliding",
         options: "Paragliding",
         description: "paraglading theme"
       },
-      
+
       {
         link: "/cycling",
         options: "Cycling",
@@ -80,6 +89,12 @@ const Header = () => {
     ],
   };
 
+
+  const nestedOptionsItems = {
+    "Rafting": [{ link: "8-rafting", option: "rafting", description: "8 raftinh description" },
+    { link: "16-rafting", option: "16-Rafting", description: "16 rafting description" }, { link: "24-rafting", option: "24-Rafting", description: "24 rafting description" }, { link: "36-rafting", option: "36-Rafting", description: "36-rafting description" }]
+  }
+
   const upperHeaderItem = [
     { link: "/whatsApp", linkText: "WhatsApp" },
     { link: "/contact", linkText: "Contact Us" },
@@ -89,7 +104,7 @@ const Header = () => {
     "Adventure",
     "About",
     "Special Interest Tours",
-    
+
     "Climbing Expeditions",
   ];
 
@@ -131,49 +146,66 @@ const Header = () => {
           HimalyanKite
         </a>
 
-        <NavigationMenu>
-          <NavigationMenuList>
-            {/* Dropdown: Adventure,Special interest Tours,Climbing Expeditions */}
-            {dropdownMenuItem.map((menuItem) => {
-              const Item = dropdownItems[menuItem];
-              console.log(Item);
-              return (
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="lg:max-w">{menuItem}</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid w-[560px] grid-cols-2 gap-4 p-6">
-                      {/* Dropdown Inside Link ,Options and Description */}
-                      {Item.map((content) => {
-                        console.log(content);
-                        return (
-                          <a
-                            href={content.link}
-                            className="block rounded-md p-3 hover:bg-accent hover:text-accent-foreground"
-                          >
-                            <div className="font-medium">{content.options}</div>
-                            <div className="text-sm text-muted-foreground">
-                              {content.description}
-                            </div>
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              );
-            })}
+        <div className="flex items-center gap-1">
+          {/* Main Dropdown Menu */}
+          {dropdownMenuItem.map((menuItem) => {
+            const items = dropdownItems[menuItem];
+            return (
+              <DropdownMenu key={menuItem}>
+                <DropdownMenuTrigger className="inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:outline-none">
+                  {menuItem}
+                  <ChevronDownIcon className="ml-1 size-4 transition duration-300" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  {items.map((item) => {
+                    const nestedItems = nestedOptionsItems[item.options];
+                    return (
+                      <DropdownMenuSub key={item.options}>
+                        <DropdownMenuSubTrigger className="cursor-pointer">
+                          <div>
+                            <div className="font-medium text-sm">{item.options}</div>
+                            <div className="text-xs text-muted-foreground">{item.description}</div>
+                          </div>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuSubContent>
+                          {nestedItems && nestedItems.length > 0 ? (
+                            nestedItems.map((nestedItem) => (
+                              <DropdownMenuItem key={nestedItem.link} asChild>
+                                <a href={nestedItem.link} className="cursor-pointer">
+                                  <div>
+                                    <div className="font-medium">{nestedItem.option}</div>
+                                    <div className="text-xs text-muted-foreground">{nestedItem.description}</div>
+                                  </div>
+                                </a>
+                              </DropdownMenuItem>
+                            ))
+                          ) : (
+                            <DropdownMenuItem asChild>
+                              <a href={item.link} className="cursor-pointer">
+                                <div className="font-medium">{item.options}</div>
+                              </a>
+                            </DropdownMenuItem>
+                          )}
+                        </DropdownMenuSubContent>
+                      </DropdownMenuSub>
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            );
+          })}
 
-            {/* Simple link (no dropdown) */}
-
-            {simpleLinks.map(simple=>( 
-              <NavigationMenuItem>
-              <NavigationMenuLink href={simple.link}>{simple.linkText}</NavigationMenuLink>
-            </NavigationMenuItem>))
-            }
-          </NavigationMenuList>
-          <NavigationMenuIndicator />
-          <NavigationMenuViewport />
-        </NavigationMenu>   
+          {/* Simple links (no dropdown) */}
+          {simpleLinks.map((simple) => (
+            <a
+              key={simple.link}
+              href={simple.link}
+              className="inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:outline-none"
+            >
+              {simple.linkText}
+            </a>
+          ))}
+        </div>
       </div>
     </header>
   );
