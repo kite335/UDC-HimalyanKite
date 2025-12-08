@@ -246,3 +246,48 @@ Would you like me to:
 Apply the optional min-height now? (yes/no)
 Also apply the centering/offset changes we discussed earlier so the carousel starts where the top cards end?
 Tell me which next change you want and I’ll apply it.
+
+
+## 2nd Chat
+
+I'll examine the dropdown component to understand the issue you're describing.
+
+Read dropdown-menu.jsx, lines 1 to 100
+
+Read Header.jsx, lines 1 to 100
+
+Let me continue reading the Header component to see how the dropdown is being used:
+
+Read Header.jsx, lines 100 to 204
+
+Read dropdown-menu.jsx, lines 100 to 222
+
+Now I understand the issue. Let me provide you with the problem analysis and solution:
+
+Problem Analysis
+The nested dropdown inside the dropdown is not showing suggestions because of the following issues:
+
+Root Causes:
+Wrong Component Used: The nested dropdown is using NavigationMenu with NavigationMenuTrigger and NavigationMenuContent, which are designed for navigation, not nested dropdowns. This causes z-index and viewport issues that prevent proper display.
+
+Z-Index Stacking Context: The NavigationMenuViewport has a fixed viewport that doesn't allow nested content to overflow properly. When you open a nested menu, its content gets clipped or positioned incorrectly.
+
+Hardcoded Data for Nested Items: The nested menu only maps nestedOptionsItems.Rafting regardless of which parent item is clicked. You have a "Rafting" data object but don't use it dynamically based on the selected parent menu item.
+
+Overflow Hidden: The parent NavigationMenuContent has fixed dimensions and likely has overflow rules that clip child content.
+
+Solution:
+Use a proper nested dropdown component instead:
+
+Use Radix UI's DropdownMenuSub, DropdownMenuSubTrigger, and DropdownMenuSubContent for nested dropdowns
+This is already exported in your dropdown-menu.jsx file but not being used
+These components handle z-index, positioning, and overflow correctly
+Dynamically map nested items based on the parent selection instead of hardcoding "Rafting"
+Implementation Steps:
+Replace NavigationMenu structure with DropdownMenu for the nested items
+Use DropdownMenuSub to wrap nested items
+Use DropdownMenuSubTrigger for the parent menu item
+Use DropdownMenuSubContent for the submenu content
+Create a dynamic lookup object that maps each parent menu item to its nested options
+Handle keyboard navigation automatically (Radix UI does this)
+This approach will ensure proper stacking context, overflow handling, and keyboard navigation without any clipping issues.
