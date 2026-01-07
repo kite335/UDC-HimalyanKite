@@ -17,7 +17,7 @@ const CardSection3 = () => {
               Popular trips our travelers are booking right now.
             </p>
 
-            <Row>
+            <Row className="mt-5 mb-5">
 
               {cardItem.map((item,index)=>
                   (
@@ -31,7 +31,7 @@ const CardSection3 = () => {
                     <Card.Text>
                       {item.city}
                     </Card.Text>
-                    <Link to='/' className="bg-blue-500"><Button>Learn More</Button></Link>
+                    <Link to='/' className="bg-violet-600 hover:bg-sky-700"><Button>Learn More</Button></Link>
                   </Card.Body>
                 </Card>
                 
@@ -45,6 +45,8 @@ const CardSection3 = () => {
         </Row>
       </Container>
       </div>
+
+      
     </>
   );
 };
