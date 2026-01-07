@@ -3,11 +3,13 @@ import{Link} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CardSection3 = () => {
-    const cardItem=[]
+    const cardItem=[{img:"https://www.shikhar.com/images/tours/rajasthan-camel-safari-tour-intro.jpg",day:"16 Days / 15 Nights", tour:"Rajasthan Camel Safari Tour",city:"Delhi - Mandawa - Bikaner - Jaisalmer - Sand dunes - Kanoi - Masoordi - Deegasar - Amarsagar - Jaisalmer - Jodhpur - Jaipur"},
+      {img:"https://www.shikhar.com/images/tours/hornbill-festival-nagaland-intro.jpg",day:"9 Days / 8 Nights", tour:"Hornbill Festival Tour Package - Nagaland",city:"Hornbill Festival Tour Package - Nagaland"},
+      {img:"https://www.shikhar.com/images/tours/mt-kilimanjaro-expedition-5895-m-intro.jpg",day:"9 Days / 8 Nights", tour:"Mount Kilimanjaro Trekking",city:"Route No.-1: Machame Route"}]
   return (
     <>
     <div className="bg-blue-500">
-      <Container className="text-center my-5">
+      <Container className="text-center ">
         <Row>
           <Col md={12} className=" text-white p-4">
             <h2>Trending Travel Experiences</h2>
@@ -17,19 +19,26 @@ const CardSection3 = () => {
 
             <Row>
 
-              <Col md={4}>
-                <Card  text="black">
-                    <Card.Img variant="top" src="https://www.shikhar.com/images/tours/rajasthan-camel-safari-tour-intro.jpg" />
+              {cardItem.map((item,index)=>
+                  (
+                    <Col md={4} key={index} >
+                    
+                <Card  text="black" style={{height:"490px"}}>
+                    <Card.Img  variant="top" src={item.img}/>
                   <Card.Body>
-                    <p>16 Days / 15 Nights</p>
-                    <Card.Title>Rajasthan Camel Safari Tour</Card.Title>
+                    <p>{item.day}</p>
+                    <Card.Title>{item.tour}</Card.Title>
                     <Card.Text>
-                      Delhi - Mandawa - Bikaner - Jaisalmer - Sand dunes - Kanoi - Masoordi - Deegasar - Amarsagar - Jaisalmer - Jodhpur - Jaipur
+                      {item.city}
                     </Card.Text>
-                    <Link to='/' className="bg-blue-500">Learn More</Link>
+                    <Link to='/' className="bg-blue-500"><Button>Learn More</Button></Link>
                   </Card.Body>
                 </Card>
+                
               </Col>
+                  )
+                 )}
+              
 
                </Row>
           </Col>
