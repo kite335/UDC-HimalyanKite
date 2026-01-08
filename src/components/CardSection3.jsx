@@ -5,9 +5,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const CardSection3 = () => {
     const cardItem=[{img:"https://www.shikhar.com/images/tours/rajasthan-camel-safari-tour-intro.jpg",day:"16 Days / 15 Nights", tour:"Rajasthan Camel Safari Tour",city:"Delhi - Mandawa - Bikaner - Jaisalmer - Sand dunes - Kanoi - Masoordi - Deegasar - Amarsagar - Jaisalmer - Jodhpur - Jaipur"},
       {img:"https://www.shikhar.com/images/tours/hornbill-festival-nagaland-intro.jpg",day:"9 Days / 8 Nights", tour:"Hornbill Festival Tour Package - Nagaland",city:"Hornbill Festival Tour Package - Nagaland"},
-      {img:"https://www.shikhar.com/images/tours/mt-kilimanjaro-expedition-5895-m-intro.jpg",day:"9 Days / 8 Nights", tour:"Mount Kilimanjaro Trekking",city:"Route No.-1: Machame Route"}]
+      {img:"https://www.shikhar.com/images/tours/mt-kilimanjaro-expedition-5895-m-intro.jpg",day:"9 Days / 8 Nights", tour:"Mount Kilimanjaro Trekking",city:"Route No.-1: Machame Route"}];
+
+      const cardItem_2=[
+        {img:"https://www.shikhar.com/images/tours/mount-kun-expedition-7077m-newhome.jpg",day:"24 Days / 23 Nights",tour:"Mount Kun Expedition (7077 M | 23218 Ft)",city:"Delhi - Leh - Kargil - Parkachik - Shafat Nala - Base Camp - Summit - Base Camp - Kargil - Leh - Delhi"},
+
+        {img:"https://www.shikhar.com/images/tours/markha-valley-winter-trek-newhome.jpg",day:"8 Days / 7 Nights",tour:"Markha Valley Trek - Cost And Itinerary Of Markha Valley",city:"Leh - Chilling - Skiu - Sara – Markha Village - Skiu – Chilling – Leh"},
+
+        {img:"https://www.shikhar.com/images/tours/mount-nun-expedition-7135-m-newhome.jpg",day:"24 Days / 23 Nights",tour:"Mount Nun Climbing Expedition (7135 M | 23409 Ft)",city:"Delhi - Leh - Kargil - Tangol - Base Camp - Summit Mt Nun - Base Camp - Tangol - Kargil - Leh - Delhi"}
+
+      ]
+
   return (
+
     <>
+    <section>
     <div className="bg-blue-500">
       <Container className="text-center ">
         <Row>
@@ -31,7 +43,7 @@ const CardSection3 = () => {
                     <Card.Text>
                       {item.city}
                     </Card.Text>
-                    <Link to='/' className="bg-violet-600 hover:bg-sky-700"><Button>Learn More</Button></Link>
+                    <Link to='/' className="bg-violet-600 hover:bg-sky-700"><Button>Book now</Button></Link>
                   </Card.Body>
                 </Card>
                 
@@ -45,7 +57,42 @@ const CardSection3 = () => {
         </Row>
       </Container>
       </div>
+      </section>
 
+               {/* section-2 */}
+
+      <section>
+       <div className="bg-blue-500 ">
+        <div className=" text-center bg-[url('https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg')] bg-cover bg-center ">
+        <h1 className="pt-5">High-Altitude Adventures & Cultural Trails</h1>
+          <p className="pt-3 text-xl">Explore legendary peaks, remote trails, and once-in-a-lifetime expeditions led by expert guides</p>
+         <div className="container mt-5">
+          <div className="row">
+            {cardItem_2.map((item)=>(
+               <div className="col-md-4">
+             <Card  text="black" style={{height:"490px"}}>
+                    <Card.Img  variant="top" src={item.img}/>
+                  <Card.Body>
+                    <p>{item.day}</p>
+                    <Card.Title>{item.tour}</Card.Title>
+                    <Card.Text>
+                      {item.city}
+                    </Card.Text>
+                    <Link to='/' className="bg-violet-600 hover:bg-sky-700"><Button>Book now</Button></Link>
+                  </Card.Body>
+                </Card>
+          </div>
+            ))}
+          </div>
+         
+         </div>
+              <Link to="/" > <Button className="mt-5 mb-5">Explore Uttarkhand</Button></Link>
+          
+        </div>
+        
+       
+       </div>
+      </section>
       
     </>
   );
