@@ -14,6 +14,11 @@ const CardSection3 = () => {
 
         {img:"https://www.shikhar.com/images/tours/mount-nun-expedition-7135-m-newhome.jpg",day:"24 Days / 23 Nights",tour:"Mount Nun Climbing Expedition (7135 M | 23409 Ft)",city:"Delhi - Leh - Kargil - Tangol - Base Camp - Summit Mt Nun - Base Camp - Tangol - Kargil - Leh - Delhi"}
 
+      ];
+
+      const cardItem_3=[
+        {img:"https://images.pexels.com/photos/1441207/pexels-photo-1441207.jpeg",day:"24 Days / 23 Nights",tour:"Mount Kun Expedition (7077 M | 23218 Ft)",city:"Delhi - Leh - Kargil - Parkachik - Shafat Nala - Base Camp - Summit - Base Camp - Kargil - Leh - Delhi"},
+        {img:"https://images.pexels.com/photos/7846473/pexels-photo-7846473.jpeg",day:"",tour:"",city:""},{img:"https://images.pexels.com/photos/34804199/pexels-photo-34804199.jpeg",day:"",tour:"",city:""}
       ]
 
   return (
@@ -93,6 +98,46 @@ const CardSection3 = () => {
        
        </div>
       </section>
+                     {/* Section-3 */}
+       <section>
+       <div className="bg-blue-500 ">
+        <div className=" text-center bg-[url('https://images.unsplash.com/photo-1720936313396-0c20c09aa8d2?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center ">
+        <h1 className="pt-5 font-bold">Top Experiential Tours in Uttarkhand</h1>
+          <p className="pt-3 text-xl font-bold">Uncover the Heart of Uttarkhand Through Curated, Authentic Experiences</p>
+         <div className="container mt-5">
+          <div className="row">
+            {cardItem_3.map((item)=>(
+               <div className="col-md-4">
+             <Card  text="black" style={{height:"490px"}}>
+                    <Card.Img  variant="top" src={item.img} style={{height:"250px",objectFit:"cover",objectPosition:"center"}}/>
+                  <Card.Body>
+                    <p>{item.day}</p>
+                    <Card.Title>{item.tour}</Card.Title>
+                    <Card.Text>
+                      {item.city}
+                    </Card.Text>
+                    <Link to='/' className="bg-violet-600 hover:bg-sky-700"><Button>Book now</Button></Link>
+                  </Card.Body>
+                </Card>
+          </div>
+            ))}
+          </div>
+         
+         </div>
+              <Link to="/" > <Button className="mt-5 mb-5">Explore Packages</Button></Link>
+          
+        </div>
+        
+       
+       </div>
+      </section>
+                      {/* section-4 */}
+
+                      <section>
+                        <div>
+                          
+                        </div>
+                      </section>
       
     </>
   );
