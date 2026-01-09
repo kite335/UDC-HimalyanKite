@@ -21,6 +21,15 @@ const CardSection3 = () => {
         {img:"https://images.pexels.com/photos/7846473/pexels-photo-7846473.jpeg",day:"",tour:"",city:""},{img:"https://images.pexels.com/photos/34804199/pexels-photo-34804199.jpeg",day:"",tour:"",city:""}
       ]
 
+      const cardItem_4=[
+        {head:"Riskiesh",img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/30/3a/3c/mesmerizing.jpg?w=600&h=600&s=1",p:"Whether taking a boat ride in the lake or just walking along it on the Mall Road, the views are breathtaking.",btn:""},
+
+         {head:"Naintal",img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/a9/84/bb/triveni-ghaat-entrance.jpg?w=1000&h=-1&s=1",p:"Do visit in the evening when you visit rishikesh, it is a good place to sit in peace and watch the river.",btn:""},
+         
+          {head:"Kedarnath",img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/51/35/6c/on-the-way-to-kedarnath.jpg?w=1000&h=800&s=1",
+          p:"The trek to Kedarnath is both challenging and breathtaking."
+            ,btn:""}  
+      ]
   return (
 
     <>
@@ -135,7 +144,33 @@ const CardSection3 = () => {
 
                       <section>
                         <div>
-                          
+                          <div className=" text-center bg-[url('https://images.pexels.com/photos/19558507/pexels-photo-19558507.jpeg')] bg-cover bg-center ">
+        <h1 className="pt-5 font-bold">Discover India’s Best-Kept Secrets</h1>
+          <p className="pt-3 text-xl font-bold">Carefully crafted India tours blending cultural depth, natural beauty, and unforgettable experiences</p>
+         <div className="container mt-5">
+          <div className="row">
+            {cardItem_4.map((item)=>(
+               <div className="col-md-4">
+             <Card className="px-4 box-boder " text="black" style={{height:"490px"}}>
+              <h1>{item.head}</h1>
+                    <Card.Img  variant="top" src={item.img} style={{height:"250px",objectFit:"cover",objectPosition:"center"}}/>
+                  <Card.Body className="box-boder">
+                    <p className="text-justify">{item.p}</p>
+                    <Card.Title>{item.tour}</Card.Title>
+                    <Card.Text>
+                      {item.city}
+                    </Card.Text>
+                    <Link to='/' className=" hover:bg-sky-700"><Button className=" box-border w-[250px]">View All Packages</Button></Link>
+                  </Card.Body>
+                </Card>
+          </div>
+            ))}
+          </div>
+         
+         </div>
+              <Link to="/" > <Button className="mt-5 mb-5">View All Destinations</Button></Link>
+          
+        </div>
                         </div>
                       </section>
       

@@ -27,7 +27,8 @@ const CardCarousel = () => {
   return (
     <>
     <div style={{ backgroundImage: `url(${backgroundImage})` }} className=" py-50 relative bg-cover bg-center bg-no-repeat">
-      <h1 className="relative top-1">Adventure to get your Aderaline High</h1>
+      <h1 className="relative top-1 text-lg text-white font-bold text-center  ">Adventure to get your Aderaline High</h1>
+      <p className="text-center mb-5 font-bold text-xl text-white">Whether you’re a seeker, a summit-chaser, a culture lover, or a curious learner – we have a travel theme just for you</p>
     <Carousel
      opts={{
         align: "start",
@@ -60,6 +61,7 @@ const CardCarousel = () => {
       <CarouselNext className="absolute top-1/2 right-2"/>
     </Carousel>
     </div>
+    
     </>
   )
 }
